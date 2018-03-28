@@ -19,3 +19,12 @@ buildScan {
     publishAlways()
 }
 
+// Local or CI
+if (System.getenv('CI')) {
+    buildScan.tag 'CI'
+   buildScan.link 'CI Build', System.getenv('CIRCLE_BUILD_URL')
+   buildScan.link 'Source Code', System.getenv('CIRCLE_REPOSITORY_URL')
+} else {
+    buildScan.tag 'LOCAL'
+}
+
