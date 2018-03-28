@@ -1,2 +1,12 @@
 rootProject.name = 'gradle-build-scan-quickstart'
 
+buildCache {
+    local {
+        enabled = false
+    }
+    remote(HttpBuildCache) {
+        push = true
+        enabled = true
+        url = "https://enterprise-training.gradle.com/cache/"
+    }
+}
